@@ -21,6 +21,7 @@ y este proyecto adhiere a [SemVer](https://semver.org/spec/v2.0.0.html).
 ### Corregido
 - Flujo de integración de Pull Requests apuntando correctamente a la rama `dev`.
 - Limpieza y reestructuración de archivos sueltos y temporales en la raíz del proyecto.
+- `EjecutorQuery.ejecutar()` ahora lanza `ErrorQuery` en vez de devolver `ResultadoQuery.deError(...)`, unificando el manejo de errores SQL con `ConnectionProvider` y conservando el mensaje original del error.
 - `getTablas()` en los 3 DAO de conexión (MySQL, PostgreSQL, SQLite) ahora reutiliza los datos reales de la última conexión abierta, en vez de valores codificados como `localhost`.
 
 ### Cambiado
