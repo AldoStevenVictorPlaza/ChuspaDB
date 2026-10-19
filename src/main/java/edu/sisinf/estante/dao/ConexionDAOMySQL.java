@@ -27,6 +27,9 @@ public class ConexionDAOMySQL implements IConexionDAO {
     private static final String PARAMS_CON_SSL =
             "useSSL=true&requireSSL=true&" + PARAMS_BASE;
 
+    // Guarda la última conexión abierta para reutilizar sus datos reales en getTablas().
+    private Conexion ultimaConexion;
+
     @Override
     public TipoMotor motor() {
         return TipoMotor.MYSQL;
@@ -50,7 +53,7 @@ public class ConexionDAOMySQL implements IConexionDAO {
         return String.format("jdbc:mysql://%s:%s/%s?%s",
                 conexion.getHost(),
                 puerto,
-                conexion.getBaseDatos(),
+                conexion.getBasedatos(),
                 params);
     }
 
@@ -62,26 +65,41 @@ public class ConexionDAOMySQL implements IConexionDAO {
         if (conexion.getHost() == null || conexion.getHost().isBlank()) {
             throw new ErrorConexion("El host no puede estar vacío.");
         }
-        if (conexion.getBaseDatos() == null || conexion.getBaseDatos().isBlank()) {
+        if (conexion.getBasedatos() == null || conexion.getBasedatos().isBlank()) {
             throw new ErrorConexion("El nombre de la base de datos no puede estar vacío.");
         }
+
+        this.ultimaConexion = conexion;
 
         String url = construirUrl(conexion);
         return DriverManager.getConnection(url,
                 conexion.getUsuario(),
-                conexion.getContrasena());
+                conexion.getPassword());
     }
 
     @Override
-    public List<String> getTablas(String nombreBaseDatos) throws SQLException {
+    public List<String> getTablas(String nombreBaseDatos) throws SQLException, ErrorConexion {
+        if (nombreBaseDatos == null || !nombreBaseDatos.matches("[a-zA-Z0-9_]+")) {
+            throw new ErrorConexion("Nombre de base de datos inválido: " + nombreBaseDatos);
+        }
+        if (ultimaConexion == null) {
+            throw new ErrorConexion("No hay una conexión activa. Debe abrir una conexión antes de listar las tablas.");
+        }
+
         List<String> tablas = new ArrayList<>();
 
-        String url = String.format("jdbc:mysql://localhost:%s/%s?%s",
-                PUERTO_DEFAULT,
-                nombreBaseDatos,
-                PARAMS_SIN_SSL);
+        String puerto = (ultimaConexion.getPuerto() != null)
+                ? ultimaConexion.getPuerto().toString()
+                : PUERTO_DEFAULT;
+        String params = ultimaConexion.isUsarSSL() ? PARAMS_CON_SSL : PARAMS_SIN_SSL;
 
-        try (Connection conn = DriverManager.getConnection(url);
+        String url = String.format("jdbc:mysql://%s:%s/%s?%s",
+                ultimaConexion.getHost(),
+                puerto,
+                nombreBaseDatos,
+                params);
+
+        try (Connection conn = DriverManager.getConnection(url, ultimaConexion.getUsuario(), ultimaConexion.getPassword());
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SHOW TABLES IN " + nombreBaseDatos)) {
 
@@ -93,7 +111,7 @@ public class ConexionDAOMySQL implements IConexionDAO {
         return tablas;
     }
 
-   @Override
+    @Override
     public boolean probar(Conexion conexion) {
         try (Connection conn = abrir(conexion)) {
             return conn.isValid(3);
