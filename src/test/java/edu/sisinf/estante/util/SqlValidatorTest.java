@@ -94,6 +94,14 @@ class SqlValidatorTest {
         assertFalse(SqlValidator.esLectura("INSERT INTO libros (id) VALUES (1)"));
     }
 
+    @Test
+    @DisplayName("Los comandos DDL no deben considerarse consultas de lectura")
+    void esLectura_conDDL_retornaFalse() {
+        assertFalse(SqlValidator.esLectura("DROP TABLE libros"));
+        assertFalse(SqlValidator.esLectura("CREATE TABLE libros (id INT)"));
+        assertFalse(SqlValidator.esLectura("ALTER TABLE libros ADD COLUMN autor TEXT"));
+    }
+
     // -------------------------------------------------------------------------
     // esDML() y esDDL()
     // -------------------------------------------------------------------------
