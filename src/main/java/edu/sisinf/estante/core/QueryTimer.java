@@ -31,9 +31,13 @@ public class QueryTimer {
      * @throws IllegalStateException si se llama antes de invocar detener()
      */
     public double getTiempoMs() {
+        if (tiempoInicio == null) {
+            throw new IllegalStateException(
+                "No se puede obtener el tiempo: debe llamar a iniciar() antes de obtener el tiempo transcurrido.");
+        }
         if (tiempoFin == null) {
             throw new IllegalStateException(
-                "No se puede obtener el tiempo: detener() no ha sido llamado.");
+                "No se puede obtener el tiempo: debe llamar a iniciar() y luego a detener() antes de obtener el tiempo transcurrido.");
         }
         return (tiempoFin - tiempoInicio) / 1_000_000.0;
     }
