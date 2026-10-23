@@ -30,6 +30,6 @@ y este proyecto adhiere a [SemVer](https://semver.org/spec/v2.0.0.html).
 ## [0.1.0] - 2026-04-19
 
 ### Añadido
-- Estructura inicial del proyecto Estante.
+- Estructura inicial del proyecto ChuspaDB.
 - Configuración básica del repositorio y rama de desarrollo.
 - Creación de la carpeta de documentación (`docs/`).
