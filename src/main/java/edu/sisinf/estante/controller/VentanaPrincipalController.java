@@ -41,7 +41,7 @@ public class VentanaPrincipalController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Acerca de");
             alert.setHeaderText("ChuspaDB");
-            alert.setContentText("Versión: 1.0.0\nLicencia: MIT");
+            alert.setContentText("Versión: 0.1.0\nLicencia: MIT");
             alert.showAndWait();
         });
     }
