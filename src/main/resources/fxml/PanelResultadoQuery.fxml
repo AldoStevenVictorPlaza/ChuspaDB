@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="edu.sisinf.ChuspaDB.controller.PanelResultadoQueryController"
+      fx:controller="edu.sisinf.Chuspadb.controller.PanelResultadoQueryController"
       spacing="5">
 
     <ToolBar>
