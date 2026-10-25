@@ -23,6 +23,7 @@ y este proyecto adhiere a [SemVer](https://semver.org/spec/v2.0.0.html).
 - Limpieza y reestructuración de archivos sueltos y temporales en la raíz del proyecto.
 - `EjecutorQuery.ejecutar()` ahora lanza `ErrorQuery` en vez de devolver `ResultadoQuery.deError(...)`, unificando el manejo de errores SQL con `ConnectionProvider` y conservando el mensaje original del error.
 - `getTablas()` en los 3 DAO de conexión (MySQL, PostgreSQL, SQLite) ahora reutiliza los datos reales de la última conexión abierta, en vez de valores codificados como `localhost`.
+- Diálogo «Acerca de» conectado al menú, mostrando el nombre del proyecto, la versión `0.1.0` y la licencia MIT.
 
 ### Cambiado
 - Refactorizaciones estructurales y optimizaciones de rendimiento aplicadas a lo largo del sprint actual.
