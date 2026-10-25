@@ -1,5 +1,6 @@
 package edu.sisinf.estante.modelo;
 
+import edu.sisinf.chuspadb.modelo.ColumnaInfo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
