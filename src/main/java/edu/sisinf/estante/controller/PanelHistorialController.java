@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Controller del panel de historial de queries de Estante.
+ * Controller del panel de historial de queries de ChuspaDB.
  *
  * <p>Muestra las últimas queries ejecutadas en la sesión en un ListView.
  * Expone hooks para que la integración reaccione al doble clic sobre
