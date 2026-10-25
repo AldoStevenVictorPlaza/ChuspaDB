@@ -2,19 +2,21 @@
 
 ## Estado actual
 
-Actualmente se identificó la siguiente clase con pruebas unitarias:
+Se identificaron las siguientes clases con pruebas unitarias en el proyecto:
 
-| Clase | Cobertura % | Estado |
-|---------|---------|---------|
-| Conexion | No disponible | Existe ConexionTest |
+| Clase probada | Archivo de prueba | Paquete |
+| :--- | :--- | :--- |
+| `Conexion` | `ConexionTest.java` | `edu.sisinf.estante` |
+| `DBConfig` | `DBConfigTest.java` | `edu.sisinf.estante` |
+| `ErrorEstante` | `ErrorEstanteTest.java` | `edu.sisinf.estante` |
+| `ExportadorCSV` | `ExportadorCSVTest.java` | `edu.sisinf.estante` |
+| `ExportadorJSON` | `ExportadorJSONTest.java` | `edu.sisinf.estante` |
+| `GeneradorSQL` | `GeneradorSQLTest.java` | `edu.sisinf.estante` |
+| `HistorialQuery` | `HistorialQueryTest.java` | `edu.sisinf.estante` |
+| `SqlValidator` | `SqlValidatorTest.java` | `edu.sisinf.estante` |
 
-## Clases con cobertura menor al 50%
-
-No fue posible determinar este dato debido a que no se encuentra disponible un reporte JaCoCo generado y publicado en el repositorio.
 
 ## Observaciones
-
-Se identificó la existencia de pruebas unitarias para la clase Conexion mediante el archivo ConexionTest.java.
 
 Para obtener los porcentajes reales de cobertura se requiere generar un reporte JaCoCo mediante:
 
@@ -22,4 +24,3 @@ Para obtener los porcentajes reales de cobertura se requiere generar un reporte 
 mvn test jacoco:report
 ```
 
-y analizar los resultados producidos por la herramienta.
