@@ -266,7 +266,7 @@ public class App extends Application {
             dialog.initModality(Modality.APPLICATION_MODAL);
 
             dialog.setScene(new Scene(root));
-            // El botón Probar se registra solo en el FXML (handleProbarConexion).
+
             controller.setDaos(daos);
 
             controller.setOnGuardar(() -> {
@@ -331,7 +331,7 @@ public class App extends Application {
 
             nodo.getChildren().clear();
 
-            for (Esquema esquema : esquemas){
+            for (Esquema esquema : esquemas) {
                 nodo.getChildren().add(
                         new TreeItem<>(esquema.getNombre())
                 );
