@@ -29,5 +29,5 @@ jobs:
       - name: Subir artefacto de despliegue
         uses: actions/upload-artifact@v7
         with:
-          name: estante-shaded
-          path: target/estante-*-shaded.jar
+          name: chuspadb-shaded
+          path: target/chuspadb-*-shaded.jar
