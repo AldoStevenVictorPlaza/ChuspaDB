@@ -102,6 +102,12 @@ public class ExportadorJSON {
         }
 
         if (valor instanceof Number) {
+            if (valor instanceof Double && (((Double) valor).isNaN() || ((Double) valor).isInfinite())) {
+                return "null";
+            }
+            if (valor instanceof Float && (((Float) valor).isNaN() || ((Float) valor).isInfinite())) {
+                return "null";
+            }
             return valor.toString();
         }
 
