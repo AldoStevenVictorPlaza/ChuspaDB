@@ -26,7 +26,7 @@ import java.nio.file.Paths;
 public class ConfiguracionApp {
 
     /** Nombre del directorio oculto que usa la aplicacion dentro del home del usuario. */
-    private static final String APP_DIRECTORY = ".estante";
+    private static final String APP_DIRECTORY = ".ChuspaDB";
 
     /** Nombre del archivo que almacena las conexiones del usuario. */
     private static final String CONNECTIONS_FILE = "conexiones.json";
