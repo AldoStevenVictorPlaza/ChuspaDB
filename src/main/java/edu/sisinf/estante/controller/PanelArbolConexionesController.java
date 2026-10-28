@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Controller del panel izquierdo de Estante.
+ * Controller del panel izquierdo de ChuspaDB.
  */
 public class PanelArbolConexionesController {
 
