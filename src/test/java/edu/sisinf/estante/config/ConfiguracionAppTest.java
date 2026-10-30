@@ -29,12 +29,12 @@ class ConfiguracionAppTest {
     }
 
     @Test
-    void directorioHomeTerminaEnEstanteYCuelgaDeUserHome(@TempDir Path tmp) {
+    void directorioHomeTerminaEnChuspaDBYCuelgaDeUserHome(@TempDir Path tmp) {
         System.setProperty("user.home", tmp.toString());
 
         Path directorio = ConfiguracionApp.directorioHome();
 
-        assertEquals(".estante", directorio.getFileName().toString());
+        assertEquals(".ChuspaDB", directorio.getFileName().toString());
         assertEquals(tmp, directorio.getParent());
     }
 
