@@ -1,4 +1,4 @@
-package edu.sisinf.estante.util;
+package edu.sisinf.chuspadb.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
